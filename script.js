@@ -81,3 +81,47 @@ if (gridEffect) {
     gridEffect.appendChild(tile);
   }
 }
+
+// 3D Profile Carousel Logic
+const carouselBlock = document.getElementById("profileCarousel");
+if (carouselBlock) {
+  const items = Array.from(carouselBlock.querySelectorAll(".carousel-item"));
+  
+  // Ordered classes defining the 3D queue states
+  const classState = [
+    "item-active", 
+    "item-next-1", 
+    "item-next-2", 
+    "item-next-3", 
+    "item-prev"
+  ];
+  
+  let carouselInterval;
+  
+  const slideNext = () => {
+    // Shift the class array to rotate the state mappings backwards
+    // making elements move "forward" (leftward) through the sequence.
+    classState.unshift(classState.pop());
+    
+    items.forEach((item, index) => {
+      // Reset base class and apply new positional class
+      item.className = "carousel-item";
+      item.classList.add(classState[index]);
+    });
+  };
+  
+  const startCarousel = () => {
+    carouselInterval = setInterval(slideNext, 2000);
+  };
+  
+  const stopCarousel = () => {
+    clearInterval(carouselInterval);
+  };
+  
+  // Start infinite loop
+  startCarousel();
+  
+  // Pause on hover
+  carouselBlock.addEventListener("mouseenter", stopCarousel);
+  carouselBlock.addEventListener("mouseleave", startCarousel);
+}
