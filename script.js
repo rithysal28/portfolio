@@ -45,7 +45,7 @@ if (ticker && tickerContent) {
 }
 
 const revealItems = document.querySelectorAll(
-  ".section-head, .section-copy, .card, .skills-block, .contact-links a, .hero-content, .hero-panel"
+  ".section-head, .section-copy, .card, .skills-block, .contact-links a, .hero-content, .hero-panel, .hero-actions"
 );
 
 if (revealItems.length > 0) {
@@ -66,4 +66,18 @@ if (revealItems.length > 0) {
     item.style.transitionDelay = `${Math.min(index * 35, 280)}ms`;
     observer.observe(item);
   });
+}
+
+const gridEffect = document.getElementById("heroGridEffect");
+if (gridEffect) {
+  // 3rem is usually 48px
+  const colCount = Math.floor(gridEffect.clientWidth / 48) + 2; 
+  const rowCount = Math.floor(gridEffect.clientHeight / 48) + 2;
+  const tileCount = colCount * rowCount;
+  
+  for (let i = 0; i < tileCount; i++) {
+    const tile = document.createElement("div");
+    tile.className = "hero-grid-effect-tile";
+    gridEffect.appendChild(tile);
+  }
 }
