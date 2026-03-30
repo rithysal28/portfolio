@@ -270,7 +270,7 @@ h1 {
   color: var(--text-soft);
   border: 1px solid var(--line-bright);
   padding: 0.3rem 0.52rem;
-  background: rgba(255, 255, 255, 0.02);
+  background: var(--bg);
 }
 
 .hero-actions {
@@ -305,7 +305,7 @@ h1 {
 .panel-metrics {
   margin-top: 1rem;
   border: 1px solid var(--line-bright);
-  background: rgba(255, 255, 255, 0.015);
+  background: var(--bg);
 }
 
 .panel-metrics > div {
@@ -379,7 +379,7 @@ h1 {
 }
 
 .btn-ghost {
-  background: transparent;
+  background: var(--bg);
 }
 
 .btn:hover {
