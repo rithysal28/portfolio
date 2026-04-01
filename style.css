@@ -160,6 +160,7 @@ a {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(calc(-1 * var(--ticker-distance, 50%)));
   }
@@ -218,7 +219,7 @@ a {
 .hero-grid-effect-tile:hover::before {
   height: 3rem;
   width: 3rem;
-  transition: 70ms linear all; 
+  transition: 70ms linear all;
 }
 
 .hero-content {
@@ -308,12 +309,12 @@ h1 {
   background: var(--bg);
 }
 
-.panel-metrics > div {
+.panel-metrics>div {
   border-bottom: 1px solid var(--line);
   padding: 0.58rem 0.7rem;
 }
 
-.panel-metrics > div:last-child {
+.panel-metrics>div:last-child {
   border-bottom: none;
 }
 
@@ -435,7 +436,7 @@ h2 {
   margin-top: 1.8rem;
   list-style: none;
   font-size: 0.88rem;
-  color: var(--text-soft); 
+  color: var(--text-soft);
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
@@ -460,15 +461,43 @@ h2 {
 }
 
 .about-image {
+  position: relative;
   width: 100%;
   max-width: 320px;
   perspective: 1000px;
 }
 
+.me-annotation {
+  position: absolute;
+  top: -80px;
+  right: -370px;
+  /* Push completely out past the right edge of carousel */
+  width: 300px;
+  height: auto;
+  pointer-events: none;
+  z-index: 20;
+  opacity: 0.95;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
+  animation: float-annotation 4.5s ease-in-out infinite;
+}
+
+@keyframes float-annotation {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+
+  50% {
+    transform: translateY(-10px) rotate(2deg);
+  }
+}
+
 .profile-carousel {
   position: relative;
   width: 100%;
-  aspect-ratio: 1 / 1.1; /* Slightly taller than 1:1, or let's stick to 1:1 */
+  aspect-ratio: 1 / 1.1;
+  /* Slightly taller than 1:1, or let's stick to 1:1 */
   transform-style: preserve-3d;
 }
 
@@ -495,7 +524,7 @@ h2 {
 
 /* Hover-pause dynamic visual feedback (optional enhancement) */
 .profile-carousel:hover .item-active {
-  transform: translateX(0) scale(1.03); 
+  transform: translateX(0) scale(1.03);
 }
 
 /* Queued items sitting behind */
@@ -776,6 +805,10 @@ h2 {
   .about-image {
     max-width: 260px;
     margin: 0 auto;
+  }
+
+  .me-annotation {
+    display: none;
   }
 
   .resume-grid {
