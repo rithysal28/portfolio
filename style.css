@@ -469,9 +469,8 @@ h2 {
 
 .me-annotation {
   position: absolute;
-  top: -80px;
+  top: -90px;
   right: -370px;
-  /* Push completely out past the right edge of carousel */
   width: 300px;
   height: auto;
   pointer-events: none;
